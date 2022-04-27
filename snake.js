@@ -17,6 +17,48 @@ let snake = [ [1,4], [1,3], [1,2], [1,1] ];
 let apple = [1,1];
 let direction = 'right';
 
+window.addEventListener("keydown", function(event) {
+    if(event.defaultPrevented) {
+        return;
+    }
+    if(event.code == 'ArrowLeft') {
+        switch(direction) {
+            case 'up':
+                direction = 'left';
+                break;
+            case 'left':
+                direction = 'down';
+                break;
+            case 'down':
+                direction = 'right';
+                break;
+            case 'right':
+                    direction = 'up';
+                    break;
+            default:
+                break;
+        }
+    }
+    if(event.code == 'ArrowRight') {
+        switch(direction) {
+            case 'up':
+                direction = 'right';
+                break;
+            case 'right':
+                direction = 'down';
+                break;
+            case 'down':
+                direction = 'left';
+                break;
+            case 'left':
+                    direction = 'up';
+                    break;
+            default:
+                break;
+        }
+    }
+});
+
 for(let i = 1; i < fieldnumber; i++) {
     for(let k = 1; k < fieldnumber; k++) {
         gameframe.innerHTML += '<div class="field" style="grid-column-start: ' + i +  '; grid-row-start: ' + k + ';"></div>'; 
@@ -162,47 +204,12 @@ function renderFrame() {
 }
 
 function start_game() {
-    window.addEventListener("keydown", function(event) {
-        if(event.defaultPrevented) {
-            return;
-        }
-        if(event.code == 'ArrowLeft') {
-            switch(direction) {
-                case 'up':
-                    direction = 'left';
-                    break;
-                case 'left':
-                    direction = 'down';
-                    break;
-                case 'down':
-                    direction = 'right';
-                    break;
-                case 'right':
-                        direction = 'up';
-                        break;
-                default:
-                    break;
-            }
-        }
-        if(event.code == 'ArrowRight') {
-            switch(direction) {
-                case 'up':
-                    direction = 'right';
-                    break;
-                case 'right':
-                    direction = 'down';
-                    break;
-                case 'down':
-                    direction = 'left';
-                    break;
-                case 'left':
-                        direction = 'up';
-                        break;
-                default:
-                    break;
-            }
-        }
-    });
+    for(let i = 0; i < (fieldnumber-1)*(fieldnumber-1); i++) {
+        gameframe.childNodes[i].style.backgroundColor = '';
+    }
+    apple = [1,1];
+    snake = [ [1,4], [1,3], [1,2], [1,1] ];
+    direction = 'right';
 
     snake.forEach(function(item, index, snake) {
         color_field(item[0], item[1], 'green');
