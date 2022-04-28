@@ -184,6 +184,7 @@ function addRunToHighscores(score) {
         highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.pop();
     }
     loadHighscores();
+    updateScoreDownload();
 }
 
 function updateScoreDownload() {
