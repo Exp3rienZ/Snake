@@ -4,6 +4,7 @@ let speedInput = document.getElementById('speed');
 let sizeInput = document.getElementById('size');
 let speedLabel = document.getElementById('speedLabel');
 let sizeLabel = document.getElementById('sizeLabel');
+let highscores = document.getElementById('highscores');
 
 let runtime;
 
@@ -12,6 +13,21 @@ let fieldnumber = 15;
 let game_speed = 280;
 let walkableWalls = true;
 
+class highscoreSet {
+    constructor(speed, size, walkableWalls) {
+        this.speed = speed;
+        this.size = size;
+        this.walkableWalls = walkableWalls;
+        this.data = [];
+        for(let n = 0; n < 10; n++) {
+            this.data.push(0);
+        }
+    }
+
+    getScore(n) {
+        return this.data[n];
+    }
+}
 
 let snake = [ [1,4], [1,3], [1,2], [1,1] ];
 let apple = [1,1];
@@ -33,8 +49,8 @@ window.addEventListener("keydown", function(event) {
                 direction = 'right';
                 break;
             case 'right':
-                    direction = 'up';
-                    break;
+                direction = 'up';
+                break;
             default:
                 break;
         }
@@ -51,8 +67,8 @@ window.addEventListener("keydown", function(event) {
                 direction = 'left';
                 break;
             case 'left':
-                    direction = 'up';
-                    break;
+                direction = 'up';
+                break;
             default:
                 break;
         }
@@ -63,6 +79,10 @@ for(let i = 1; i < fieldnumber; i++) {
     for(let k = 1; k < fieldnumber; k++) {
         gameframe.innerHTML += '<div class="field" style="grid-column-start: ' + i +  '; grid-row-start: ' + k + ';"></div>'; 
     }
+}
+
+for(let i = 1; i <= 10; i++) {
+    highscores.innerHTML += '<div class="highscoreElement">' +  + '</div>';
 }
 
 function getField(x, y) {

@@ -62,3 +62,31 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: large;
 }
+
+.highscores {
+    position: absolute;
+    right: 100px;
+    top: 200px;
+    height: 400px;
+    width: 300px;
+    background-color: #c9c9c9;
+    border: 10px rgb(54, 54, 54) solid;
+    border-radius: 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.highscoreHeader {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: x-large;
+    margin: 0 auto;
+}
+
+.highscoreSettings {
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:13px;
+    margin: 0 auto;
+}
