@@ -16,7 +16,9 @@
                     <label for="size" id="sizeLabel">Size: 15</label><br>
                     <input type="range" name="size" id="size" min="10" max="30"  value="15" onchange="changeSize(this.value)"><br>
                     <label for="walls" id="wallsLabel">WalkableWalls:</label><br>
-                    <input type="checkbox" name="walls" id="walls" onchange="changeWalls()" checked>
+                    <input type="checkbox" name="walls" id="walls" onchange="changeWalls()" checked><br>
+                    <label for="snakeColor" id="snakeColorLabel">Snake Color:</label><br>
+                    <input type="color" name="snakeColor" id="snakeColor" onchange="changeColor(this.value)">
                 </div>
                 <div class="button" onclick="start_game()"></div>
             </div>

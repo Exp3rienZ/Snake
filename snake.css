@@ -107,3 +107,7 @@ body {
     margin: 0 auto;
     font-weight: 600;
 }
+
+.inputs input {
+    margin: 0 auto;
+}

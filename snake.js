@@ -14,6 +14,7 @@ let highscoresLoaded = false;
 let fieldnumber = 15;
 let game_speed = 280;
 let walkableWalls = true;
+let selectedColor = 'green';
 
 class highscoreSet {
     constructor(speed, size, walkableWalls) {
@@ -203,6 +204,10 @@ function loadHighscores() {
     }
 }
 
+function changeColor(input) {
+    selectedColor = input;
+}
+
 function newApple() {
     let done = false;
     let randX = 0;
@@ -323,9 +328,12 @@ function renderFrame() {
     snake.unshift([next_y, next_x]);
 
     for(let z = 0; z < snake.length; z++) {
-        color_field(snake[z][0], snake[z][1], 'green');
+        color_field(snake[z][0], snake[z][1], selectedColor);
     }
-    color_field(snake[0][0], snake[0][1], 'darkgreen');
+    let headOfSnake = getField(snake[0][1], snake[0][0]);
+    headOfSnake.style.filter = 'brightness(80%)';
+    let fieldAfterHead = getField(snake[1][1], snake[1][0]);
+    fieldAfterHead.style.filter = 'brightness(100%)';
 }
 
 function start_game() {
@@ -339,9 +347,10 @@ function start_game() {
     direction = 'right';
 
     snake.forEach(function(item, index, snake) {
-        color_field(item[0], item[1], 'green');
+        color_field(item[0], item[1], selectedColor);
     }) 
-    color_field(snake[0][0], snake[0][1], 'darkgreen');
+    let headOfSnake = getField(snake[0][1], snake[0][0]);
+    headOfSnake.style.filter = 'brightness(120%)';
     
     newApple();
 
