@@ -330,6 +330,7 @@ function renderFrame() {
 
 function start_game() {
     clearInterval(runtime);
+    scoreCounter.innerHTML = '0';
     for(let i = 0; i < (fieldnumber-1)*(fieldnumber-1); i++) {
         gameframe.childNodes[i].style.backgroundColor = '';
     }
