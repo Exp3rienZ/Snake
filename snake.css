@@ -90,3 +90,19 @@ body {
     font-size:13px;
     margin: 0 auto;
 }
+
+.highscoreFile {
+    margin: 0 auto;
+}
+
+.downloadScores {
+    display: none;
+    font-weight: 600;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:13px;
+    margin: 0 auto;
+}
+
+.highscoreElement {
+    margin: 0 auto;
+}

@@ -5,9 +5,11 @@ let sizeInput = document.getElementById('size');
 let speedLabel = document.getElementById('speedLabel');
 let sizeLabel = document.getElementById('sizeLabel');
 let highscores = document.getElementById('highscores');
+let highscoreSettings = document.getElementById('highscoreSettings');
 
 let runtime;
-
+let highscoreDataSets = [];
+let highscoresLoaded = false;
 
 let fieldnumber = 15;
 let game_speed = 280;
@@ -18,7 +20,7 @@ class highscoreSet {
         this.speed = speed;
         this.size = size;
         this.walkableWalls = walkableWalls;
-        this.data = [];
+        this.data = [0];
         for(let n = 0; n < 10; n++) {
             this.data.push(0);
         }
@@ -82,8 +84,29 @@ for(let i = 1; i < fieldnumber; i++) {
 }
 
 for(let i = 1; i <= 10; i++) {
-    highscores.innerHTML += '<div class="highscoreElement">' +  + '</div>';
+    highscores.innerHTML += '<div class="highscoreElement"></div>';
 }
+
+let fileInput = document.getElementById('fileInput');
+fileInput.addEventListener('change', () => {
+    let file = fileInput.files[0];
+    let reader = new FileReader();
+    let json_string = '';    
+    reader.readAsText(file, 'utf8');
+    reader.onload = function() {
+        json_string = reader.result;
+        highscoreDataSets = JSON.parse(reader.result);
+        highscoresLoaded = true;
+        alert('Highscoredaten geladen');
+        let blob = new Blob([json_string], {type: 'text/plain'});
+        let downloadLink = document.getElementById('downloadlink');
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.style.display = 'block';
+        loadHighscores();
+    }
+});
+
+changeHighScoreSettings('5', '15' , 'true');
 
 function getField(x, y) {
     return gameframe.childNodes[x-1 + (fieldnumber-1) * (y-1)];
@@ -98,11 +121,19 @@ function changeSize(input) {
             gameframe.innerHTML += '<div class="field" style="grid-column-start: ' + i +  '; grid-row-start: ' + k + ';"></div>'; 
         }
     }
+    changeHighScoreSettings((game_speed-530)/-50, input, walkableWalls);
+    if(highscoresLoaded) {
+        loadHighscores();
+    }
 }
 
 function changeSpeed(input) {
     speedLabel.innerHTML = 'Speed: ' + input;
     game_speed = 530 - (input * 50);
+    changeHighScoreSettings(input, fieldnumber, walkableWalls);
+    if(highscoresLoaded) {
+        loadHighscores();
+    }
 }
 
 function color_field(x, y, color) {
@@ -111,6 +142,64 @@ function color_field(x, y, color) {
 
 function changeWalls() {
     walkableWalls = !walkableWalls;
+    changeHighScoreSettings((game_speed-530)/-50, fieldnumber, walkableWalls);
+    if(highscoresLoaded) {
+        loadHighscores();
+    }
+}
+
+function changeHighScoreSettings(speed, size, walkableWalls) {
+    highscoreSettings = document.getElementById('highscoreSettings');
+    highscoreSettings.innerHTML = '<div class="settHigh">Speed: ' + speed + ', Size: ' + size + ', WalkableWalls: ' + walkableWalls + '</div>';
+    if(highscoresLoaded == true) {
+        getCurrentHighscores();
+    }
+}
+
+function changeHighscoreFile(input) {
+    let file = input.file;
+    console.log(file);
+}
+
+function getCurrentHighscores() {
+    if(walkableWalls == true) {
+        return highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data;
+    } else {
+        return highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data;
+    }
+}
+
+function addRunToHighscores(score) {
+    if(walkableWalls == true) {
+        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data.push(score);
+        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data.sort(function(a,b) {
+            return b-a;
+        });
+        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data.pop();
+    } else {
+        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.push(score);
+        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.sort(function(a,b) {
+            return b-a;
+        });
+        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.pop();
+    }
+    loadHighscores();
+}
+
+function updateScoreDownload() {
+    let json_string = JSON.stringify(highscoreDataSets);
+    let blob = new Blob([json_string], {type: 'text/plain'});
+    let downloadLink = document.getElementById('downloadlink');
+    downloadLink.href = window.URL.createObjectURL(blob);
+    downloadLink.style.display = 'block';
+}
+
+function loadHighscores() {
+    let currentHighscores = getCurrentHighscores();
+    let highscoreElements = document.querySelectorAll('.highscoreElement');
+    for(let n = 0; n < 10; n++) {
+        highscoreElements[n].innerHTML = n+1 + ': &nbsp;' + currentHighscores[n];
+    }
 }
 
 function newApple() {
@@ -163,6 +252,9 @@ function renderFrame() {
         } else {
             clearInterval(runtime);
             alert('Game Over');
+            if(highscoresLoaded) {
+                addRunToHighscores(parseInt(scoreCounter.innerHTML));
+            }
             return;
         }
     }
@@ -172,6 +264,9 @@ function renderFrame() {
         } else {
             clearInterval(runtime);
             alert('Game Over');
+            if(highscoresLoaded) {
+                addRunToHighscores(parseInt(scoreCounter.innerHTML));
+            }
             return;
         }
     }
@@ -181,6 +276,9 @@ function renderFrame() {
         } else {
             clearInterval(runtime);
             alert('Game Over');
+            if(highscoresLoaded) {
+                addRunToHighscores(parseInt(scoreCounter.innerHTML));
+            }
             return;
         }
     }
@@ -189,6 +287,9 @@ function renderFrame() {
             next_y = fieldnumber - 1;
         } else {
             clearInterval(runtime);
+            if(highscoresLoaded) {
+                addRunToHighscores(parseInt(scoreCounter.innerHTML));
+            }
             alert('Game Over');
             return;
         }
@@ -198,6 +299,9 @@ function renderFrame() {
     for(let k = 0; k < snake.length; k++) {
         if(snake[k][0] == next_y && snake[k][1] == next_x) {
             clearInterval(runtime);
+            if(highscoresLoaded) {
+                addRunToHighscores(parseInt(scoreCounter.innerHTML));
+            }
             alert('Game Over');
             return;
         }

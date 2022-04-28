@@ -14,7 +14,7 @@
                     <br>
                     <input type="range" name="speed" id="speed" min="0" max="10" onchange="changeSpeed(this.value)" oninput="changeSpeed(this.value)"><br>
                     <label for="size" id="sizeLabel">Size: 15</label><br>
-                    <input type="range" name="size" id="size" min="10" max="40"  value="15" onchange="changeSize(this.value)"><br>
+                    <input type="range" name="size" id="size" min="10" max="30"  value="15" onchange="changeSize(this.value)"><br>
                     <label for="walls" id="wallsLabel">WalkableWalls:</label><br>
                     <input type="checkbox" name="walls" id="walls" onchange="changeWalls()" checked>
                 </div>
@@ -23,7 +23,9 @@
             <div class="gameframe" id="gameframe"></div>
             <div class="highscores" id="highscores">
                 <div class="highscoreHeader" id="highscoreHeader">Highscores</div>
-                <div class="highscoreSettings" id="highscoreSettings">Speed: 5, Size: 15, WalkableWalls: An</div>
+                <div class="highscoreFile"><input type="file" id="fileInput"></div>
+                <a download="highscores.txt" id="downloadlink" class="downloadScores">Download</a>
+                <div class="highscoreSettings" id="highscoreSettings"></div>
             </div>
         </div>  
         
