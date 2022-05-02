@@ -6,6 +6,8 @@ let speedLabel = document.getElementById('speedLabel');
 let sizeLabel = document.getElementById('sizeLabel');
 let highscores = document.getElementById('highscores');
 let highscoreSettings = document.getElementById('highscoreSettings');
+let appleCountLabel = document.getElementById('appleCountLabel');
+let appleCountInput =  document.getElementById('appleCount');
 
 let runtime;
 let highscoreDataSets = [];
@@ -15,14 +17,16 @@ let fieldnumber = 15;
 let game_speed = 280;
 let walkableWalls = true;
 let selectedColor = 'green';
+let appleCount = 1;
 
 class highscoreSet {
-    constructor(speed, size, walkableWalls) {
+    constructor(speed, size, appleCount, walkableWalls) {
         this.speed = speed;
         this.size = size;
         this.walkableWalls = walkableWalls;
+        this.appleCount = appleCount;
         this.data = [0];
-        for(let n = 0; n < 10; n++) {
+        for(let n = 0; n < 9; n++) {
             this.data.push(0);
         }
     }
@@ -32,8 +36,17 @@ class highscoreSet {
     }
 }
 
+for(let i = 0; i < 11; i++) {
+    for(let p = 10; p < 31; p++) {
+        for(let q = 1; q < 6; q++) {
+            highscoreDataSets.push(new highscoreSet(i, p, q, 0));
+            highscoreDataSets.push(new highscoreSet(i, p, q, 1));
+        }
+    }
+}
+
 let snake = [ [1,4], [1,3], [1,2], [1,1] ];
-let apple = [1,1];
+let apples = [];
 let direction = 'right';
 
 window.addEventListener("keydown", function(event) {
@@ -107,7 +120,7 @@ fileInput.addEventListener('change', () => {
     }
 });
 
-changeHighScoreSettings('5', '15' , 'true');
+changeHighScoreSettings('5', '15' , 'true', '1');
 
 function getField(x, y) {
     return gameframe.childNodes[x-1 + (fieldnumber-1) * (y-1)];
@@ -122,7 +135,7 @@ function changeSize(input) {
             gameframe.innerHTML += '<div class="field" style="grid-column-start: ' + i +  '; grid-row-start: ' + k + ';"></div>'; 
         }
     }
-    changeHighScoreSettings((game_speed-530)/-50, input, walkableWalls);
+    changeHighScoreSettings((game_speed-530)/-50, input, walkableWalls, appleCount);
     if(highscoresLoaded) {
         loadHighscores();
     }
@@ -131,7 +144,7 @@ function changeSize(input) {
 function changeSpeed(input) {
     speedLabel.innerHTML = 'Speed: ' + input;
     game_speed = 530 - (input * 50);
-    changeHighScoreSettings(input, fieldnumber, walkableWalls);
+    changeHighScoreSettings(input, fieldnumber, walkableWalls, appleCount);
     if(highscoresLoaded) {
         loadHighscores();
     }
@@ -143,15 +156,15 @@ function color_field(x, y, color) {
 
 function changeWalls() {
     walkableWalls = !walkableWalls;
-    changeHighScoreSettings((game_speed-530)/-50, fieldnumber, walkableWalls);
+    changeHighScoreSettings((game_speed-530)/-50, fieldnumber, walkableWalls, appleCount);
     if(highscoresLoaded) {
         loadHighscores();
     }
 }
 
-function changeHighScoreSettings(speed, size, walkableWalls) {
+function changeHighScoreSettings(speed, size, walkableWalls, appleCount) {
     highscoreSettings = document.getElementById('highscoreSettings');
-    highscoreSettings.innerHTML = '<div class="settHigh">Speed: ' + speed + ', Size: ' + size + ', WalkableWalls: ' + walkableWalls + '</div>';
+    highscoreSettings.innerHTML = '<div class="settHigh">Speed: ' + speed + ', Size: ' + size + ',<br> appleCount: ' + appleCount + ', WalkableWalls: ' + walkableWalls + '</div>';
     if(highscoresLoaded == true) {
         getCurrentHighscores();
     }
@@ -164,25 +177,25 @@ function changeHighscoreFile(input) {
 
 function getCurrentHighscores() {
     if(walkableWalls == true) {
-        return highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data;
+        return highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount].data;
     } else {
-        return highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data;
+        return highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount + 1].data;
     }
 }
 
 function addRunToHighscores(score) {
     if(walkableWalls == true) {
-        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data.push(score);
-        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data.sort(function(a,b) {
+        highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount].data.push(score);
+        highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount].data.sort(function(a,b) {
             return b-a;
         });
-        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2 + 1].data.pop();
+        highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount].data.pop();
     } else {
-        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.push(score);
-        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.sort(function(a,b) {
+        highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount + 1].data.push(score);
+        highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount + 1].data.sort(function(a,b) {
             return b-a;
         });
-        highscoreDataSets[((game_speed-530)/-50)*42 + (fieldnumber-10) * 2].data.pop();
+        highscoreDataSets[((game_speed-530)/-50)*42*5 + (fieldnumber-10) * 2*5 + appleCount + 1].data.pop();
     }
     loadHighscores();
     updateScoreDownload();
@@ -208,10 +221,29 @@ function changeColor(input) {
     selectedColor = input;
 }
 
-function newApple() {
+function changeAppleCount(input) {
+    appleCount = parseInt(input);
+    appleCountLabel.innerHTML = 'Apple Count: ' + appleCount;
+    apples = [];
+    for(let i = 0; i < input; i++) {
+        apples.push[i, i];
+    }
+    changeHighScoreSettings((game_speed-530)/-50, fieldnumber, walkableWalls, appleCount);
+    if(highscoresLoaded) {
+        loadHighscores();
+    }
+}
+
+function newApple(headX, headY) {
     let done = false;
     let randX = 0;
     let randY = 0;
+    for(let o = 0; o < apples.length; o++) {
+        if(apples[o][1] == headX && apples[o][0] == headY) {
+            let toSplice = apples.splice(o, 1);
+            console.log(toSplice);
+        }
+    }
     while(done == false) {
         done = true;
         randX = Math.floor(Math.random() * (fieldnumber-1) + 1);
@@ -222,8 +254,13 @@ function newApple() {
                 done = false;
             }
         }
+        for(let n = 0; n < apples.length; n++) {
+            if(apples[n][0] == randY && apples[n][1] == randX) {
+                done = false;
+            }
+        }
     }
-    apple = [randY, randX];
+    apples.push([randY, randX]);
     color_field(randY, randX, 'darkred');
 }
 
@@ -314,15 +351,19 @@ function renderFrame() {
     }
 
     //Apple-Detection:
-    if(!(next_x == apple[1] && next_y == apple[0])) {
+    let appleHit = false;
+    for(let n = 0; n < apples.length; n++) {
+        if(next_x == apples[n][1] && next_y == apples[n][0]) {
+            appleHit = true;
+            newApple(next_x, next_y);
+            let scoreCount = parseInt(scoreCounter.innerHTML);
+            scoreCount++;
+            scoreCounter.innerHTML = scoreCount;
+        }
+    }
+    if(appleHit == false) {
         let to_eraze = snake.pop();
         color_field(to_eraze[0], to_eraze[1], '');
-    }
-    else {
-        newApple();
-        let scoreCount = parseInt(scoreCounter.innerHTML);
-        scoreCount++;
-        scoreCounter.innerHTML = scoreCount;
     }
     
     snake.unshift([next_y, next_x]);
@@ -342,7 +383,6 @@ function start_game() {
     for(let i = 0; i < (fieldnumber-1)*(fieldnumber-1); i++) {
         gameframe.childNodes[i].style.backgroundColor = '';
     }
-    apple = [1,1];
     snake = [ [1,4], [1,3], [1,2], [1,1] ];
     direction = 'right';
 
@@ -352,7 +392,8 @@ function start_game() {
     let headOfSnake = getField(snake[0][0], snake[0][1]);
     headOfSnake.style.filter = 'brightness(80%)';
     
-    newApple();
-
+    for(let i = 0; i < appleCount; i++) {
+        newApple(4, 1);
+    }
     runtime = setInterval(renderFrame, game_speed);
 }
