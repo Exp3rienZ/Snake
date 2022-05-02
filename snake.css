@@ -1,3 +1,8 @@
+@font-face {
+    font-family: snakefont;
+    src: url("./ressource/snakefont/poisonlovepersonaluse-jevlo-webfont.woff2");
+}
+
 body {
     background-color: rgb(138, 180, 148);
 }
@@ -48,6 +53,9 @@ body {
     border: 5px rgb(149, 172, 143) solid;
     border-radius: 10px;
     background-color: whitesmoke;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .lengthCounter {
@@ -110,4 +118,29 @@ body {
 
 .inputs input {
     margin: 0 auto;
+}
+
+.playbutton {
+    height: 45px;
+    width: 45px;
+}
+
+.button:hover {
+    background-color: rgb(162, 209, 172);
+}
+
+.credits {
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size:13px;
+}
+
+.logo {
+    position: absolute;
+    top: 9%;
+    left: 10%;
+    font-family: snakefont, Verdana;
+    font-size: 60px;
 }

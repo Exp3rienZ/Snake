@@ -7,6 +7,7 @@
     
     <body>
         <div class="container">
+            <div class="logo">Snake</div>
             <div class="menu">
                 <div class="lengthCounter"><h2 id="score">0</h2></div>
                 <div class="inputs">
@@ -22,7 +23,9 @@
                     <label for="snakeColor" id="snakeColorLabel">Snake Color:</label><br>
                     <input type="color" name="snakeColor" id="snakeColor" onchange="changeColor(this.value)" value="#2C8E1F">
                 </div>
-                <div class="button" onclick="start_game()"></div>
+                <div class="button" onclick="start_game()">
+                    <img src="./ressource/play_button.ico" alt="PLAY" class="playbutton">
+                </div>
             </div>
             <div class="gameframe" id="gameframe"></div>
             <div class="highscores" id="highscores">
@@ -30,6 +33,9 @@
                 <div class="highscoreFile"><input type="file" id="fileInput"></div>
                 <a download="highscores.txt" id="downloadlink" class="downloadScores">Download</a>
                 <div class="highscoreSettings" id="highscoreSettings"></div>
+            </div>
+            <div class="credits">
+                <div>Created by: Yannick Rennett, 2022</div>
             </div>
         </div>  
         
