@@ -330,9 +330,9 @@ function renderFrame() {
     for(let z = 0; z < snake.length; z++) {
         color_field(snake[z][0], snake[z][1], selectedColor);
     }
-    let headOfSnake = getField(snake[0][1], snake[0][0]);
+    let headOfSnake = getField(snake[0][0], snake[0][1]);
     headOfSnake.style.filter = 'brightness(80%)';
-    let fieldAfterHead = getField(snake[1][1], snake[1][0]);
+    let fieldAfterHead = getField(snake[1][0], snake[1][1]);
     fieldAfterHead.style.filter = 'brightness(100%)';
 }
 
@@ -349,8 +349,8 @@ function start_game() {
     snake.forEach(function(item, index, snake) {
         color_field(item[0], item[1], selectedColor);
     }) 
-    let headOfSnake = getField(snake[0][1], snake[0][0]);
-    headOfSnake.style.filter = 'brightness(120%)';
+    let headOfSnake = getField(snake[0][0], snake[0][1]);
+    headOfSnake.style.filter = 'brightness(80%)';
     
     newApple();
 
