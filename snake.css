@@ -209,12 +209,17 @@ body {
 }
 
 .playbutton {
-    height: 45px;
-    width: 45px;
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border-width: 15px 0px 15px 30px;
+    border-color: transparent transparent transparent rgb(54, 54, 54);
+    margin-left: 25%;
 }
 
-.button:hover {
-    background-color: rgb(162, 209, 172);
+.playbutton:hover {
+    border-color: transparent transparent transparent rgb(138, 180, 148);
 }
 
 .credits {
@@ -222,7 +227,7 @@ body {
     right: 3%;
     bottom: 3%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size:13px;
+    font-size: 13px;
 }
 
 .logo {
