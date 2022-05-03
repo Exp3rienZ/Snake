@@ -22,6 +22,9 @@ let appleCount = 1;
 let game_paused = false;
 let game_over = true;
 
+let sound_game_over = new Audio("./ressource/sounds/game_over.wav");
+let sound_apple_eaten = new Audio("./ressource/sounds/apple_eaten.wav");
+
 class highscoreSet {
   constructor(speed, size, appleCount, walkableWalls) {
     this.speed = speed;
@@ -395,7 +398,7 @@ function renderFrame() {
         game_over = true;
         playbutton.classList.remove("pausedPlayButton");
         playbutton.classList.add("playbutton");
-        alert("Game Over");
+        sound_game_over.play();
         if (highscoresLoaded) {
           addRunToHighscores(parseInt(scoreCounter.innerHTML));
         }
@@ -410,7 +413,7 @@ function renderFrame() {
         game_over = true;
         playbutton.classList.remove("pausedPlayButton");
         playbutton.classList.add("playbutton");
-        alert("Game Over");
+        sound_game_over.play();
         if (highscoresLoaded) {
           addRunToHighscores(parseInt(scoreCounter.innerHTML));
         }
@@ -425,7 +428,7 @@ function renderFrame() {
         game_over = true;
         playbutton.classList.remove("pausedPlayButton");
         playbutton.classList.add("playbutton");
-        alert("Game Over");
+        sound_game_over.play();
         if (highscoresLoaded) {
           addRunToHighscores(parseInt(scoreCounter.innerHTML));
         }
@@ -440,10 +443,10 @@ function renderFrame() {
         game_over = true;
         playbutton.classList.remove("pausedPlayButton");
         playbutton.classList.add("playbutton");
+        sound_game_over.play();
         if (highscoresLoaded) {
           addRunToHighscores(parseInt(scoreCounter.innerHTML));
         }
-        alert("Game Over");
         return;
       }
     }
@@ -455,10 +458,10 @@ function renderFrame() {
         game_over = true;
         playbutton.classList.remove("pausedPlayButton");
         playbutton.classList.add("playbutton");
+        sound_game_over.play();
         if (highscoresLoaded) {
           addRunToHighscores(parseInt(scoreCounter.innerHTML));
         }
-        alert("Game Over");
         return;
       }
     }
@@ -477,6 +480,8 @@ function renderFrame() {
     if (appleHit == false) {
       let to_eraze = snake.pop();
       color_field(to_eraze[0], to_eraze[1], "");
+    } else {
+      sound_apple_eaten.play();
     }
 
     snake.unshift([next_y, next_x]);
