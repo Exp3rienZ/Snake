@@ -13,7 +13,7 @@ input[type=range] {
     outline: none;
   }
   input[type=range]::-webkit-slider-runnable-track {
-    background: rgba(115, 113, 114, 0.3);
+    background: rgba(115, 113, 114, 0.432);
     border: 0.1px solid #010101;
     border-radius: 25px;
     width: 100%;
@@ -24,14 +24,14 @@ input[type=range] {
     margin-top: -6.35px;
     width: 20px;
     height: 20px;
-    background: #c8dcc8;
+    background: #eefdee;
     border: 3px solid rgba(0, 0, 30, 0.8);
     border-radius: 13px;
     cursor: pointer;
     -webkit-appearance: none;
   }
   input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #9c9a9b;
+    background: #969696;
   }
   input[type=range]::-moz-range-track {
     background: rgba(115, 113, 114, 0.3);
@@ -126,25 +126,23 @@ body {
 
 .menu {
     position: absolute;
-    left: 100px;
-    top: 200px;
-    height: 480px;
-    width: 300px;
-    background-color: #c9c9c9;
-    border: 10px rgb(54, 54, 54) solid;
-    border-radius: 7px;
+    left: 10px;
+    top: 140px;
+    height: 700px;
+    width: 500px;
+    background: transparent;
+    
+    border-radius: 100px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
 .button {
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     margin: 0 auto;
-    border: 5px rgb(149, 172, 143) solid;
-    border-radius: 10px;
-    background-color: whitesmoke;
+    background: transparent;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -153,16 +151,17 @@ body {
 .lengthCounter {
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: x-large;
+    font-size: 40px;
     margin: 0 auto;
     max-height: 75px;
     margin-bottom: 10px;
 }
 
 .inputs {
-    margin: 0 auto;
+    margin-right: 20%;
+    margin-left: 20%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: large;
+    font-size: 27px;
     margin-bottom: 10px;
 }
 
@@ -228,16 +227,16 @@ body {
 
 .playbutton {
     box-sizing: border-box;
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     background: transparent;
-    border-width: 15px 0px 15px 30px;
+    border-width: 25px 0px 25px 50px;
     border-color: transparent transparent transparent rgb(54, 54, 54);
     margin-left: 25%;
 }
 
 .playbutton:hover {
-    border-color: transparent transparent transparent rgb(138, 180, 148);
+    border-color: transparent transparent transparent rgb(206, 206, 206);
 }
 
 .credits {
@@ -250,10 +249,10 @@ body {
 
 .logo {
     position: absolute;
-    top: 7.5%;
-    left: 8.5%;
+    top: 5%;
+    left: 5%;
     font-family: snakefont, Verdana;
-    font-size: 90px;
+    font-size: 120px;
 }
 
 input[type="checkbox"] {
@@ -272,8 +271,7 @@ input[type="checkbox"] {
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
-  margin-left: 35%;
-
+  margin-left: 65%;
   display: grid;
   place-content: center;
 }
