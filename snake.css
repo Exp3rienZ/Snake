@@ -3,6 +3,98 @@
     src: url("./ressource/snakefont/poisonlovepersonaluse-jevlo-webfont.woff2");
 }
 
+input[type=range] {
+    width: 100%;
+    margin: 6.25px 0;
+    background-color: transparent;
+    -webkit-appearance: none;
+  }
+  input[type=range]:focus {
+    outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+    background: rgba(115, 113, 114, 0.3);
+    border: 0.1px solid #010101;
+    border-radius: 25px;
+    width: 100%;
+    height: 7.5px;
+    cursor: pointer;
+  }
+  input[type=range]::-webkit-slider-thumb {
+    margin-top: -6.35px;
+    width: 20px;
+    height: 20px;
+    background: #c8dcc8;
+    border: 3px solid rgba(0, 0, 30, 0.8);
+    border-radius: 13px;
+    cursor: pointer;
+    -webkit-appearance: none;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #9c9a9b;
+  }
+  input[type=range]::-moz-range-track {
+    background: rgba(115, 113, 114, 0.3);
+    border: 0.1px solid #010101;
+    border-radius: 25px;
+    width: 100%;
+    height: 7.5px;
+    cursor: pointer;
+  }
+  input[type=range]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    background: #c8dcc8;
+    border: 3px solid rgba(0, 0, 30, 0.8);
+    border-radius: 13px;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    border-width: 6.25px 0;
+    color: transparent;
+    width: 100%;
+    height: 7.5px;
+    cursor: pointer;
+  }
+  input[type=range]::-ms-fill-lower {
+    background: #4a4949;
+    border: 0.1px solid #010101;
+    border-radius: 50px;
+  }
+  input[type=range]::-ms-fill-upper {
+    background: rgba(115, 113, 114, 0.3);
+    border: 0.1px solid #010101;
+    border-radius: 50px;
+  }
+  input[type=range]::-ms-thumb {
+    width: 20px;
+    height: 20px;
+    background: #c8dcc8;
+    border: 3px solid rgba(0, 0, 30, 0.8);
+    border-radius: 13px;
+    cursor: pointer;
+    margin-top: 0px;
+    /*Needed to keep the Edge thumb centred*/
+  }
+  input[type=range]:focus::-ms-fill-lower {
+    background: rgba(115, 113, 114, 0.3);
+  }
+  input[type=range]:focus::-ms-fill-upper {
+    background: #9c9a9b;
+  }
+  /*TODO: Use one of the selectors from https://stackoverflow.com/a/20541859/7077589 and figure out
+  how to remove the virtical space around the range input in IE*/
+  @supports (-ms-ime-align:auto) {
+    /* Pre-Chromium Edge only styles, selector taken from hhttps://stackoverflow.com/a/32202953/7077589 */
+    input[type=range] {
+      margin: 0;
+      /*Edge starts the margin from the thumb, not the track as other browsers do*/
+    }
+  }
+  
+
 body {
     background-color: rgb(138, 180, 148);
 }
@@ -114,10 +206,6 @@ body {
 .highscoreElement {
     margin: 0 auto;
     font-weight: 600;
-}
-
-.inputs input {
-    margin: 0 auto;
 }
 
 .playbutton {

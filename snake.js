@@ -45,7 +45,7 @@ for(let i = 0; i < 11; i++) {
     }
 }
 
-let snake = [ [1,4], [1,3], [1,2], [1,1] ];
+let snake = [ [1,3], [1,2], [1,1] ];
 let apples = [];
 let direction = 'right';
 
@@ -383,7 +383,7 @@ function start_game() {
     for(let i = 0; i < (fieldnumber-1)*(fieldnumber-1); i++) {
         gameframe.childNodes[i].style.backgroundColor = '';
     }
-    snake = [ [1,4], [1,3], [1,2], [1,1] ];
+    snake = [ [1,3], [1,2], [1,1] ];
     direction = 'right';
 
     snake.forEach(function(item, index, snake) {
