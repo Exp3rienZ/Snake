@@ -128,7 +128,7 @@ body {
     position: absolute;
     left: 100px;
     top: 200px;
-    height: 450px;
+    height: 480px;
     width: 300px;
     background-color: #c9c9c9;
     border: 10px rgb(54, 54, 54) solid;
@@ -155,19 +155,22 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: x-large;
     margin: 0 auto;
+    max-height: 75px;
+    margin-bottom: 10px;
 }
 
 .inputs {
     margin: 0 auto;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: large;
+    margin-bottom: 10px;
 }
 
 .highscores {
     position: absolute;
     right: 100px;
     top: 200px;
-    height: 450px;
+    height: 480px;
     width: 300px;
     background-color: #c9c9c9;
     border: 10px rgb(54, 54, 54) solid;
