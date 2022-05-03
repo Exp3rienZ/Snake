@@ -222,6 +222,10 @@ body {
   margin-left: 25%;
 }
 
+.pausedPlayButton:hover {
+  border-color: transparent transparent transparent rgb(138, 180, 148);
+}
+
 .playbutton {
     box-sizing: border-box;
     width: 30px;
@@ -246,10 +250,10 @@ body {
 
 .logo {
     position: absolute;
-    top: 9%;
-    left: 10%;
+    top: 7.5%;
+    left: 8.5%;
     font-family: snakefont, Verdana;
-    font-size: 60px;
+    font-size: 90px;
 }
 
 input[type="checkbox"] {
