@@ -265,7 +265,7 @@ input[type="checkbox"] {
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
-  margin-left: 40%;
+  margin-left: 35%;
 
   display: grid;
   place-content: center;
@@ -293,4 +293,8 @@ input[type="checkbox"]:disabled {
 
   color: var(--form-control-disabled);
   cursor: not-allowed;
+}
+
+.colorInputFrame {
+  margin-left: 25%;
 }
