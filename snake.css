@@ -120,6 +120,19 @@ body {
     display: grid;
 }
 
+.gameframeWalkableWalls {
+    background-color: #c9c9c9;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 800px;
+    width: 800px;
+    border: 15px rgb(100, 100, 100) solid;
+    border-radius: 10px;
+    display: grid;
+}
+
 .field {
     border: 2px rgb(100, 100, 100) solid;
 }
@@ -236,7 +249,7 @@ body {
 }
 
 .playbutton:hover {
-    border-color: transparent transparent transparent rgb(206, 206, 206);
+    border-color: transparent transparent transparent rgb(155, 155, 155);
 }
 
 .credits {

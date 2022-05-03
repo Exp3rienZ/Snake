@@ -182,8 +182,18 @@ function color_field(x, y, color) {
   getField(x, y).style.backgroundColor = color;
 }
 
+gameframe.classList.add("gameframeWalkableWalls");
+gameframe.classList.remove("gameframe");
+
 function changeWalls() {
   walkableWalls = !walkableWalls;
+  if (walkableWalls) {
+    gameframe.classList.add("gameframeWalkableWalls");
+    gameframe.classList.remove("gameframe");
+  } else {
+    gameframe.classList.add("gameframe");
+    gameframe.classList.remove("gameframeWalkableWalls");
+  }
   changeHighScoreSettings(
     (game_speed - 530) / -50,
     fieldnumber,
