@@ -210,11 +210,11 @@ function changeHighScoreSettings(speed, size, walkableWalls, appleCount) {
   highscoreSettings.innerHTML =
     '<div class="settHigh">Speed: ' +
     speed +
-    ", Size: " +
+    "<br> Size: " +
     size +
-    ",<br> appleCount: " +
+    "<br> appleCount: " +
     appleCount +
-    ", WalkableWalls: " +
+    "<br> Walkable-<br>Walls: " +
     walkableWalls +
     "</div>";
   if (highscoresLoaded == true) {

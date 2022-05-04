@@ -9,7 +9,6 @@
         <div class="container">
             <div class="logo">Snake</div>
             <div class="menu">
-                <div class="lengthCounter"><h2 id="score">0</h2></div>
                 <div class="inputs">
                     <label for="speed" id="speedLabel">Speed: 5</label>
                     <br>
@@ -29,11 +28,14 @@
                 </div>
             </div>
             <div class="gameframe" id="gameframe"></div>
+            <div class="lengthCounter"><h2 id="score">0</h2></div>
             <div class="highscores" id="highscores">
                 <div class="highscoreHeader" id="highscoreHeader">Highscores</div>
-                <div class="highscoreFile"><input type="file" id="fileInput"></div>
-                <a download="highscores.txt" id="downloadlink" class="downloadScores">Download</a>
-                <div class="highscoreSettings" id="highscoreSettings"></div>
+                <div class="highscoreHelpContainer">
+                    <div class="highscoreSettings" id="highscoreSettings"></div>
+                    <div class="highscoreFile"><input type="file" id="fileInput"></div>
+                    <a download="highscores.txt" id="downloadlink" class="downloadScores">Download</a>
+                </div>
             </div>
             <div class="credits">
                 <div>Created by: Yannick Rennett, 2022, vAlpha1.1</div>

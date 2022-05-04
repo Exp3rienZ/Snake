@@ -140,7 +140,7 @@ body {
 .menu {
     position: absolute;
     left: 10px;
-    top: 140px;
+    top: 160px;
     height: 700px;
     width: 500px;
     background: transparent;
@@ -162,10 +162,12 @@ body {
 }
 
 .lengthCounter {
+    position: absolute;
+    right: 12.5%;
+    top: 0%;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 40px;
-    margin: 0 auto;
+    font-size: 60px;
     max-height: 75px;
     margin-bottom: 10px;
 }
@@ -180,13 +182,11 @@ body {
 
 .highscores {
     position: absolute;
-    right: 100px;
+    right: 3%;
     top: 200px;
     height: 480px;
-    width: 300px;
-    background-color: #c9c9c9;
-    border: 10px rgb(54, 54, 54) solid;
-    border-radius: 7px;
+    width: 450px;
+    background: transparent;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -195,26 +195,31 @@ body {
 .highscoreHeader {
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: x-large;
+    font-size: 40px;
     margin: 0 auto;
+}
+
+.highscoreHelpContainer {
+    display: flex;
+    
 }
 
 .highscoreSettings {
-    font-weight: 600;
+    font-weight: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size:13px;
-    margin: 0 auto;
+    font-size:25px;
 }
 
 .highscoreFile {
-    margin: 0 auto;
+
+    width: 30%;
 }
 
 .downloadScores {
     display: none;
-    font-weight: 600;
+    font-weight: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size:13px;
+    font-size:20px;
     margin: 0 auto;
 }
 
@@ -263,7 +268,7 @@ body {
 .logo {
     position: absolute;
     top: 5%;
-    left: 5%;
+    left: 6.5%;
     font-family: snakefont, Verdana;
     font-size: 120px;
 }
