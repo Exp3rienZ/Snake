@@ -115,9 +115,13 @@ for (let i = 1; i < fieldnumber; i++) {
   }
 }
 
+let highscoreHelpContainer = document.getElementById("highscoreHelpContainer");
+let scoreList = document.createElement("div");
+scoreList.classList.add("highscoreElementContainer");
 for (let i = 1; i <= 10; i++) {
-  highscores.innerHTML += '<div class="highscoreElement"></div>';
+  scoreList.innerHTML += '<div class="highscoreElement"></div>';
 }
+highscoreHelpContainer.appendChild(scoreList);
 
 let fileInput = document.getElementById("fileInput");
 fileInput.addEventListener("change", () => {
@@ -214,9 +218,9 @@ function changeHighScoreSettings(speed, size, walkableWalls, appleCount) {
     size +
     "<br> appleCount: " +
     appleCount +
-    "<br> Walkable-<br>Walls: " +
+    '<br><div style="line-height: 25px; margin-top: 30px;"> Walkable-<br>Walls: ' +
     walkableWalls +
-    "</div>";
+    "</div></div>";
   if (highscoresLoaded == true) {
     getCurrentHighscores();
   }

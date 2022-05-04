@@ -163,7 +163,7 @@ body {
 
 .lengthCounter {
     position: absolute;
-    right: 12.5%;
+    right: 13%;
     top: 0%;
     font-weight: bold;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -183,7 +183,7 @@ body {
 .highscores {
     position: absolute;
     right: 3%;
-    top: 200px;
+    top: 28%;
     height: 480px;
     width: 450px;
     background: transparent;
@@ -207,12 +207,12 @@ body {
 .highscoreSettings {
     font-weight: 5px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size:25px;
+    font-size: 23px;
+    line-height: 100px;
 }
 
 .highscoreFile {
-
-    width: 30%;
+    margin: 20px auto;
 }
 
 .downloadScores {
@@ -320,4 +320,12 @@ input[type="checkbox"]:disabled {
 
 .colorInputFrame {
   margin-left: 25%;
+}
+
+.highscoreElementContainer {
+  width: 180px;
+  font-size: 30px;
+  line-height: 40px;
+  margin-left: 75px;
+  margin-top: 25px;
 }
