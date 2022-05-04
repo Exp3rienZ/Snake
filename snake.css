@@ -183,7 +183,7 @@ body {
 .highscores {
     position: absolute;
     right: 3%;
-    top: 28%;
+    top: 25%;
     height: 480px;
     width: 450px;
     background: transparent;
@@ -209,6 +209,7 @@ body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 23px;
     line-height: 100px;
+    margin-left: 5%;
 }
 
 .highscoreFile {
@@ -219,8 +220,13 @@ body {
     display: none;
     font-weight: 8px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size:20px;
     margin: 0 auto;
+    color: rgb(20,20,20);
+    font-size: 30px;
+}
+
+.downloadScores:hover {
+  color: rgb(80,80,80);
 }
 
 .highscoreElement {
@@ -230,17 +236,17 @@ body {
 
 .pausedPlayButton {
   box-sizing: border-box;
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
   background: transparent;
   border-style: double;
-  border-width: 0px 0 0px 30px;
+  border-width: 0px 0 0px 50px;
   border-color: transparent transparent transparent rgb(54, 54, 54);
   margin-left: 25%;
 }
 
 .pausedPlayButton:hover {
-  border-color: transparent transparent transparent rgb(138, 180, 148);
+  border-color: transparent transparent transparent rgb(129, 129, 129);
 }
 
 .playbutton {
@@ -254,7 +260,7 @@ body {
 }
 
 .playbutton:hover {
-    border-color: transparent transparent transparent rgb(155, 155, 155);
+    border-color: transparent transparent transparent rgb(129, 129, 129);
 }
 
 .credits {
@@ -289,7 +295,7 @@ input[type="checkbox"] {
   border: 0.15em solid currentColor;
   border-radius: 0.15em;
   transform: translateY(-0.075em);
-  margin-left: 65%;
+  margin-left: 10%;
   display: grid;
   place-content: center;
 }
@@ -318,14 +324,22 @@ input[type="checkbox"]:disabled {
   cursor: not-allowed;
 }
 
-.colorInputFrame {
-  margin-left: 25%;
-}
-
 .highscoreElementContainer {
+  display: flex;
+  flex-direction: column;
   width: 180px;
   font-size: 30px;
   line-height: 40px;
-  margin-left: 75px;
+  margin-left: 25px;
   margin-top: 25px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+input[type="text"]:hover {
+  cursor:pointer;
+}
+
+.walkableWallsHelperContainer {
+  display: flex;
+  margin-top: 18px;
 }

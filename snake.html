@@ -2,7 +2,10 @@
 <html>
     <head>
         <title>Snake in JS</title>
-        <link rel="stylesheet" href="snake.css">
+        <link type="text/css" rel="stylesheet" href="./ressource/packs/css/wheelcolorpicker.css" />
+        <link type="text/css" rel="stylesheet" href="snake.css">
+        <script type="text/javascript" src="./ressource/packs/jquery-3.6.0.js"></script>
+        <script type="text/javascript" src="./ressource/packs/jquery.wheelcolorpicker.js"></script>
     </head>
     
     <body>
@@ -17,10 +20,15 @@
                     <input type="range" name="size" id="size" min="10" max="30"  value="15" onchange="changeSize(this.value)"><br>
                     <label for="appleCount" id="appleCountLabel">Apple Count: 1</label><br>
                     <input type="range" name="appleCount" id="appleCount" min="1" max="5"  value="1" onchange="changeAppleCount(this.value)"><br>
-                    <label for="walls" id="wallsLabel">WalkableWalls:</label>
-                    <input type="checkbox" name="walls" id="walls" onchange="changeWalls()" checked><br>
+                    <div class="walkableWallsHelperContainer">
+                        <label for="walls" id="wallsLabel">WalkableWalls:</label>
+                        <input type="checkbox" name="walls" id="walls" onchange="changeWalls()" checked>
+                    </div><br><br>
                     <label for="snakeColor" id="snakeColorLabel" style="display: inline;">Snake Color:</label>
-                    <div class="colorInputFrame"><input type="color" name="snakeColor" id="snakeColor" onchange="changeColor(this.value)" value="#2C8E1F"></div>
+                    <div class="colorInputFrame">
+                        <div class="wheel" id="colorInput"></div>
+                        <input type="text" name="snakeColor" id="snakeColor" data-wheelcolorpicker onchange="changeColor(this.value)">
+                    </div>
                     <div style="height: 10px;"></div>
                 </div>
                 <div class="button" onclick="pressPlay()">
@@ -40,7 +48,7 @@
             <div class="credits">
                 <div>Created by: Yannick Rennett, 2022, vAlpha1.1</div>
             </div>
-        </div>  
+        </div>
         
         <script src="snake.js"></script>
     </body>

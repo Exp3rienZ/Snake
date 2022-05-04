@@ -133,7 +133,6 @@ fileInput.addEventListener("change", () => {
     json_string = reader.result;
     highscoreDataSets = JSON.parse(reader.result);
     highscoresLoaded = true;
-    alert("Highscoredaten geladen");
     let blob = new Blob([json_string], { type: "text/plain" });
     let downloadLink = document.getElementById("downloadlink");
     downloadLink.href = window.URL.createObjectURL(blob);
@@ -228,7 +227,6 @@ function changeHighScoreSettings(speed, size, walkableWalls, appleCount) {
 
 function changeHighscoreFile(input) {
   let file = input.file;
-  console.log(file);
 }
 
 function getCurrentHighscores() {
@@ -310,7 +308,7 @@ function loadHighscores() {
 }
 
 function changeColor(input) {
-  selectedColor = input;
+  selectedColor = "#" + input;
 }
 
 function changeAppleCount(input) {
